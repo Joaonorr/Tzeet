@@ -1,0 +1,50 @@
+.login {
+    margin: auto;
+    width: auto;
+} 
+
+.createAccount {
+    padding-top: 30px;
+    margin: auto;
+    width: auto;
+}
+
+.image {
+    margin: auto;
+    padding-top: 10px;
+}
+
+.card-title {
+    margin-bottom: 30px;
+}
+
+.button {
+    margin: auto;
+    padding-top: 20px;
+}
+
+body {
+    background-color: #808080;
+}
+
+p {
+    color: red;
+    font-size: 15px;
+}
+
+#inscreva-se {
+    margin-top: 20px;
+}
+
+.date-info {
+    color: gray;
+    font-size: 15px;
+}
+
+a {
+    color: rgb(29, 155, 240);
+}
+
+.btn {
+    background-color: rgb(29, 155, 240);
+}
