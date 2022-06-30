@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules\bootstrap-icons\font\bootstrap-icons.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -20,53 +21,68 @@
                         <div class="form-floating mb-3" id="name">
                             <input type="name" class="form-control" id="floatingInputName" placeholder="name">
                             <label for="nameInput">Nome:</label>
+                            <p id="alertUser" class="alert p-0 d-none">Informe um nome de usuário.</p>    
                         </div>
                         <div class="form-floating mb-3" id="email">
                             <input type="email" class="form-control" id="floatingInputEmail" placeholder="email">
                             <label for="emailInput">Email:</label>
+                            <p id="alertEmail" class="alert p-0 d-none">Informe um email válido.</p>    
                         </div>
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingPasswordCreate" placeholder="passwordCreate">
                             <label for="floatingPasswordCreate">Senha:</label>
+                            <p id="alertPassword1" class="alert p-0 d-none">A senha é obrigatório e deve ter pelo menos 6 caracteres.</p>    
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPasswordCreateConfirme" placeholder="passwordCreateConfirme">
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPasswordCreateConfirme" placeholder="passwordCreateConfirme" disabled>
                             <label for="floatingPasswordCreateConfirme">Confirmar Senha:</label>
+                            <p id="alertPassword2" class="alert p-0 d-none">A senha é obrigatório e deve ter pelo menos 6 caracteres.</p>    
+                        </div>
+                        <div class="row">
+                            <div class="col-10"></div>
+                            <div class="col-2">
+                                <button id="view-password" class="btn bg-transparent mb-3 focus-none" data-toggle="tooltip" data-placement="bottom" title="Exibir Senha">
+                                    <i id="img-password" class="bi bi-eye-fill"></i>
+                                </button>
+                            </div>
                         </div>
                         <h6>Data de nascimento</h6>
                         <p class="date-info">Isso não será exibido publicamente. Confirme sua própria idade, mesmo se esta conta for de empresa, de um animal de estimação ou outro</p>
                         <div class="row g-2 mb-3">
-                            <div class="col-md">
+                            <div class="col-5">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelectGrid">
+                                    <select class="form-select" id="floatingSelectGridMonth">
                                         <option selected></option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select>
                                     <label for="floatingSelectGrid">Mês</label>
+                                     <p id="alertMonth" class="alert p-0 d-none">Campo obrigatório.</p>    
                                 </div>
                             </div>
-                            <div class="col-md">
+                            <div class="col">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelectGrid">
+                                    <select class="form-select" id="floatingSelectGridDay">
                                         <option selected></option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select>
                                     <label for="floatingSelectGrid">Dia</label>
+                                     <p id="alertDay" class="alert p-0 d-none">Campo obrigatório.</p>    
                                 </div>
                             </div>
-                            <div class="col-md">
+                            <div class="col">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelectGrid">
+                                    <select class="form-select" id="floatingSelectGridYear">
                                         <option selected></option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select>
                                     <label for="floatingSelectGrid">Ano</label>
+                                    <p id="alertYear" class="alert p-0 d-none">Campo obrigatório.</p>    
                                 </div>
                             </div>
                         </div>
@@ -86,14 +102,15 @@
                             <label class="form-check-label mb-3" for="flexCheckDefault">
                                 Você concorda com nossos Termos, com a Política de privacidade e com o Uso de Cookies?
                             </label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
+                            <div class="form-check form-check-inline" id="checkTerms">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="termValidate" value="1">
                                 <label class="form-check-label" for="inlineRadio1">Sim</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0">
                                 <label class="form-check-label" for="inlineRadio2">Não</label>
                             </div>                      
+                            <p id="alertTerm" class="alert p-0 d-none">Você deve aceitar os termos de serviço para continuar.</p>    
                         </div>
                         <hr>
                         <div class="d-grid gap-2 button mb-3" id="createAccount_button">                            

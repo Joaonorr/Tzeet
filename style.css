@@ -27,7 +27,7 @@ body {
     background-color: #808080;
 }
 
-p {
+.alert {
     color: red;
     font-size: 15px;
 }
@@ -48,3 +48,8 @@ a {
 .btn {
     background-color: rgb(29, 155, 240);
 }
+
+.btn:focus {
+    box-shadow: none;
+}
+  

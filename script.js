@@ -1,61 +1,92 @@
-document.getElementById("login_button").onclick = function() {validate()}
+// login 
+if (document.getElementById("login_button")) {
+    document.getElementById("login_button").onclick = function() {validate_login()}
+}
+
+// create account
+if (document.getElementById("createAccount_button")) {
+    document.getElementById("createAccount_button").onclick = function() {validate_createAccount()}
+}
+
+document.getElementById("view-password").onclick = function() {
+    let button = document.getElementById("img-password");
+    if (button.classList.contains("bi-eye-fill")) {
+        document.getElementById("floatingPasswordCreate").type = "text";
+        document.getElementById("floatingPasswordCreateConfirme").type = "text";
+        button.classList.remove("bi-eye-fill");
+        button.classList.add("bi-eye-slash-fill");
+    }
+    else {
+        document.getElementById("floatingPasswordCreate").type = "password";
+        document.getElementById("floatingPasswordCreateConfirme").type = "password";
+        button.classList.add("bi-eye-fill");
+        button.classList.remove("bi-eye-slash-fill");
+    }
+}
 
 function validate_email(email) {
     let re = /\S+@\S+\.\S+/;
-    return re.test(email);
+    return re.test(email.value);
 }
 
-function validate() {
-    // validar login
-    let login = document.getElementById("floatingInput").value;
-    if (!validate_email(login)) {
-        let elemento1 = document.getElementById("floatingInput");
-        elemento1.classList.add("is-invalid");
-        if (document.getElementsByClassName("alert-login").length == 0) {
-            let aviso = document.createElement("p");
-            let text = document.createTextNode("Informe um email válido.");
-            aviso.appendChild(text);
+function equal_password(tag) {
+    var teste = tag;
+    console.log("teste1");
+    console.log(tag.value.length);
+    if (tag.value.length >= 6 && document.getElementById("floatingPasswordCreate").value.length >= 6) {
+        console.log("teste2");
+        console.log(document.getElementById("floatingPasswordCreate").value);
+        if ( !(tag.value == document.getElementById("floatingPasswordCreate").value)) {
+            console.log("teste3");
+
+            document.getElementById("alertPassword2").innerHTML = "senhas diferentes. Digite a mesma senha em ambos os campos de senha.";
+            console.log("teste3");
+            return false;
+        }
+        else {
+            document.getElementById("alertPassword2").innerHTML = "A senha é obrigatório e deve ter pelo menos 6 caracteres.";
+            return true;
+        }
+    }
+    return false;
+}
+
+function verify(id, condition, alert, auxFunction) {
+    let verification = document.getElementById(id);
+    let parameter;
     
-            elemento1.parentNode.insertBefore(aviso, elemento1.firstElementChild)
-            aviso.classList.add("alert-login");
-        }
+    // verify if auxFunction is a funcion
+    if ( typeof(auxFunction) == 'function') {
+        parameter = auxFunction(verification);
     }
     else {
-        let elemento1 = document.getElementById("floatingInput");
-        elemento1.classList.remove("is-invalid");
-        elemento1.classList.add("is-valid")
-        if (!document.getElementsByClassName("alert-login").length == 0) {
-            let tag1 = document.querySelector("[class='alert-login']");
-            if (tag1) {
-                tag1.remove();
-            }
-        }
+        parameter = true;
     }
-
-
-    // validar senha
-    let password = document.getElementById("floatingPassword").value;
-    if(password == '') {
-        let elemento2 = document.getElementById("floatingPassword");
-        elemento2.classList.add("is-invalid");
-        if (document.getElementsByClassName("alert-password").length == 0) {
-            let aviso = document.createElement("p");
-            let text = document.createTextNode("Campo obrigatório.");
-            aviso.appendChild(text);
-            elemento2.parentNode.insertBefore(aviso, elemento2.firstElementChild)
-            aviso.classList.add("alert-password");
-
-        }
-        
+    
+    if (verification.value.length <= condition || !parameter) {
+        verification.classList.remove("is-valid");
+        verification.classList.add("is-invalid");
+        document.getElementById(alert).classList.remove("d-none");
     }
     else {
-        let elemento2 = document.getElementById("floatingPassword");
-        elemento2.classList.remove("is-invalid")
-        elemento2.classList.add("is-valid")
-        if (!document.getElementsByClassName("alert-password").length == 0) {
-            let tag2 = document.querySelector("[class='alert-password']");
-            tag2.remove();
-        }
+        verification.classList.remove("is-invalid");
+        verification.classList.add("is-valid");
+        document.getElementById(alert).classList.add("d-none");
     }
+}
 
+function validate_login() {
+    verify("floatingInput", 0, "alertUser", validate_email);
+    verify("floatingPassword", 0, "alertPassword")
+}
+
+function validate_createAccount() {
+    verify("floatingInputName", 0, "alertUser");
+    verify("floatingInputEmail", 0, "alertEmail", validate_email);
+    verify("floatingPasswordCreate", 6, "alertPassword1");
+    verify("floatingPasswordCreateConfirme", 6, "alertPassword2", equal_password);
+    verify("floatingSelectGridMonth", 0, "alertMonth");
+    verify("floatingSelectGridDay", 0, "alertDay");
+    verify("floatingSelectGridYear", 0, "alertYear");
+    //verify("checkTerms", 1, "alertTerm");
 }
