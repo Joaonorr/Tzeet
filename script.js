@@ -1,3 +1,71 @@
+// verify if the user send a input with a value
+document.getElementById("floatingSelectGridMonth").onchange = function() {
+    if (document.getElementById("floatingSelectGridMonth").value != "") {
+        document.getElementById("floatingSelectGridDay").innerHTML = "";
+        document.getElementById("floatingSelectGridYear").innerHTML = "";
+        document.getElementById("floatingSelectGridDay").disabled = false;
+        document.getElementById("floatingSelectGridYear").disabled = true;
+        let qtdDays = JsonDate[document.getElementById("floatingSelectGridMonth").value].days;
+        let option = document.createElement("option");
+        option.value = "";
+        option.text = "";
+        document.getElementById("floatingSelectGridDay").options.add(option);
+
+        for (let i = 1; i <= qtdDays; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            document.getElementById("floatingSelectGridDay").options.add(option);
+        }
+        selectYear();
+    }
+    else {
+        document.getElementById("floatingSelectGridDay").disabled = true;
+        document.getElementById("floatingSelectGridDay").innerHTML = "";
+        document.getElementById("floatingSelectGridYear").disabled = true;
+        document.getElementById("floatingSelectGridYear").innerHTML = "";
+    }
+}
+
+// format year camp
+function selectYear() {
+    document.getElementById("floatingSelectGridDay").onchange = function() {
+        if (document.getElementById("floatingSelectGridDay").value == "") {
+            document.getElementById("floatingSelectGridYear").disabled = true;
+        }
+        else {
+            document.getElementById("floatingSelectGridYear").innerHTML = "";
+            document.getElementById("floatingSelectGridYear").disabled = false;
+            let option = document.createElement("option");
+            option.value = "";
+            option.text = "";
+            document.getElementById("floatingSelectGridYear").options.add(option);
+            let year = new Date().getFullYear();
+
+            if ( !((document.getElementById("floatingSelectGridMonth").value == "Feb") && (document.getElementById("floatingSelectGridDay").value == "29")) ) {
+                for (let i = year; i >= year - 102; i--) {
+                    let option = document.createElement("option");
+                    option.value = i;
+                    option.text = i;
+                    document.getElementById("floatingSelectGridYear").options.add(option);
+                }
+            }
+            else {
+                alert("sim");
+                for (let i = year; i >= year - 102; i--) {
+                    if ( (i % 4 == 0) && (i % 100 != 0 || i % 400 == 0) ) {
+                        let option = document.createElement("option");
+                        option.value = i;
+                        option.text = i;
+                        document.getElementById("floatingSelectGridYear").options.add(option);
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 // login 
 if (document.getElementById("login_button")) {
     document.getElementById("login_button").onclick = function() {validate_login()}
@@ -51,6 +119,10 @@ function equal_password(tag) {
     return false;
 }
 
+function verifyRadioButton(checkbox) {
+    return checkbox.checked; 
+}
+
 function verify(id, condition, alert, auxFunction) {
     let verification = document.getElementById(id);
     let parameter;
@@ -88,5 +160,5 @@ function validate_createAccount() {
     verify("floatingSelectGridMonth", 0, "alertMonth");
     verify("floatingSelectGridDay", 0, "alertDay");
     verify("floatingSelectGridYear", 0, "alertYear");
-    //verify("checkTerms", 1, "alertTerm");
+    verify("termValidate", 0, "alertTerm", verifyRadioButton);
 }

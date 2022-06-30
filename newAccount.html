@@ -34,7 +34,7 @@
                             <p id="alertPassword1" class="alert p-0 d-none">A senha é obrigatório e deve ter pelo menos 6 caracteres.</p>    
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPasswordCreateConfirme" placeholder="passwordCreateConfirme" disabled>
+                            <input type="password" class="form-control" id="floatingPasswordCreateConfirme" placeholder="passwordCreateConfirme">
                             <label for="floatingPasswordCreateConfirme">Confirmar Senha:</label>
                             <p id="alertPassword2" class="alert p-0 d-none">A senha é obrigatório e deve ter pelo menos 6 caracteres.</p>    
                         </div>
@@ -53,9 +53,18 @@
                                 <div class="form-floating">
                                     <select class="form-select" id="floatingSelectGridMonth">
                                         <option selected></option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="Jan">Jan</option>
+                                        <option value="Feb">Feb</option>
+                                        <option value="Mar">Mar</option>
+                                        <option value="Apr">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="Jun">Jun</option>
+                                        <option value="Jul">Jul</option>
+                                        <option value="Aug">Aug</option>
+                                        <option value="Sep">Sep</option>
+                                        <option value="Oct">Oct</option>
+                                        <option value="Nov">Nov</option>
+                                        <option value="Dec">Dec</option>
                                     </select>
                                     <label for="floatingSelectGrid">Mês</label>
                                      <p id="alertMonth" class="alert p-0 d-none">Campo obrigatório.</p>    
@@ -63,11 +72,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelectGridDay">
-                                        <option selected></option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select class="form-select" id="floatingSelectGridDay" disabled>
                                     </select>
                                     <label for="floatingSelectGrid">Dia</label>
                                      <p id="alertDay" class="alert p-0 d-none">Campo obrigatório.</p>    
@@ -75,11 +80,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelectGridYear">
-                                        <option selected></option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                    <select class="form-select" id="floatingSelectGridYear" disabled>
                                     </select>
                                     <label for="floatingSelectGrid">Ano</label>
                                     <p id="alertYear" class="alert p-0 d-none">Campo obrigatório.</p>    
@@ -123,6 +124,7 @@
             <div class="col-lg-3 col-md-2 col-sm-1"></div>
         </div>
     </div>
+    <script src="date.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
