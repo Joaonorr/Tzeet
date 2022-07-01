@@ -8,7 +8,7 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="node_modules\bootstrap-icons\font\bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules\bootstrap-icons\font\bootstrap-icons.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -108,14 +108,14 @@
                                 <label class="form-check-label" for="inlineRadio1">Sim</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="termNotValidate" value="0">
                                 <label class="form-check-label" for="inlineRadio2">Não</label>
                             </div>                      
                             <p id="alertTerm" class="alert p-0 d-none">Você deve aceitar os termos de serviço para continuar.</p>    
                         </div>
                         <hr>
                         <div class="d-grid gap-2 button mb-3" id="createAccount_button">                            
-                            <button class="btn btn-primary" type="button">Cadastrar</button>                        
+                            <button class="btn btn-primary" type="button" id="create_button" disabled>Cadastrar</button>                        
                         </div>
                         <p id="entrar replace">Já tem uma conta? <a href="login.html">Entrar</a></p>
                     </div>
@@ -124,6 +124,7 @@
             <div class="col-lg-3 col-md-2 col-sm-1"></div>
         </div>
     </div>
+    <script src="newAccount.js"></script>
     <script src="date.js"></script>
     <script src="script.js"></script>
 </body>
